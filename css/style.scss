@@ -1,0 +1,180 @@
+@import "bootstrap4/functions";
+@import "bootstrap4/variables";
+@import "bootstrap4/mixins/breakpoints";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+@font-face {
+  font-family: 'AlteHaasGrotesk';
+  src: url('./font/AlteHaasGroteskRegular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'AlteHaasGrotesk';
+  src: url('./font/AlteHaasGroteskBold.ttf');
+  font-weight: 600;
+}
+
+body {
+  font-family: "AlteHaasGrotesk";
+  background: rgb(100,113,112);
+  background: -moz-linear-gradient(180deg, rgba(100,113,112,1) 50%, rgba(9,12,21,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(100,113,112,1) 50%, rgba(9,12,21,1) 100%);
+  background: linear-gradient(180deg, rgba(100,113,112,1) 50%, rgba(9,12,21,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#647170",endColorstr="#090c15",GradientType=1);
+  min-height: 100vh;
+  margin: 0;
+}
+
+#chartjs-tooltip {
+  width: 50px;
+  table {
+    margin: 0 auto;
+  }
+}
+
+#charts {
+  background: rgb(70,88,93);
+  background: -moz-linear-gradient(180deg, rgba(70,88,93,1) 50%, rgba(51,58,60,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(70,88,93,1) 50%, rgba(51,58,60,1) 100%);
+  background: linear-gradient(180deg, rgba(70,88,93,1) 50%, rgba(51,58,60,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#46585d",endColorstr="#333a3c",GradientType=1);
+  display: inline-grid;
+  max-width: 100%;
+  @include media-breakpoint-up(md) {
+    margin: 27px;
+    padding: 25px 40px;
+  }
+  @include media-breakpoint-down(sm) {
+    margin: 10px;
+    padding: 10px 20px;
+  }
+  .text-large {
+    @include media-breakpoint-up(md) {
+      font-size: 38px;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 24px;
+    }
+  }
+  #charts_header {
+    .chart_canvas_container {
+      height: auto;
+      > div {
+        &:first-child {
+          color: #FFF;
+          text-transform: uppercase;
+          font-weight: 400;
+        }
+        &:last-child {
+          color: #777780;
+          @include media-breakpoint-up(md) {
+            font-size: 20px;
+          }
+          @include media-breakpoint-down(sm) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .chart_data {
+      margin-top: 15px;
+      color: #777780;
+      &.error {
+        color: #E23333;
+      }
+      &.warning {
+        color: #CB9B47;
+      }
+    }
+  }
+  .chart {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: max-content;
+    &:not(#charts_header) {
+      @include media-breakpoint-down(xs) {
+        display: flex;
+        flex-direction: column;
+        .chart_canvas_container {
+          order: 2;
+        }
+        .chart_data {
+          order: 1;
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .chart_canvas_container {
+      @include media-breakpoint-up(lg) {
+        width: 1000px;
+      }
+      @include media-breakpoint-down(md) {
+        overflow: auto;
+      }
+      @include media-breakpoint-only(md) {
+        width: 645px;
+      }
+      @include media-breakpoint-only(sm) {
+        width: 300px;
+      }
+      @include media-breakpoint-down(xs) {
+        width: 300px;
+      }
+      height: 70px;
+      position: relative;
+      @include media-breakpoint-up(sm) {
+        float: left;
+      }
+    }
+    .chart_data {
+      @include media-breakpoint-only(xl) {
+        padding-left: 100px;
+      }
+      @include media-breakpoint-between(md, lg) {
+        padding-left: 50px;
+      }
+      @include media-breakpoint-only(sm) {
+        padding-left: 20px;
+      }
+      @include media-breakpoint-up(sm) {
+        float: left;
+        min-width: 170px;
+      }
+      > div {
+        text-align: center;
+        &:nth-child(2), &:nth-child(3) {
+          @include media-breakpoint-up(md) {
+            font-size: 15px;
+          }
+          @include media-breakpoint-up(sm) {
+            min-height: 18px;
+          }
+          @include media-breakpoint-down(sm) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  #charts_info {
+    > div {
+      color: #8E8EC1;
+      @include media-breakpoint-up(sm) {
+        width: calc(100%/3);
+        float: left;
+        &:nth-child(2) {
+          text-align: center;
+        }
+        &:nth-child(3) {
+          text-align: right;
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 12px;
+      }
+      @include media-breakpoint-down(xs) {
+        text-align: center;
+      }
+    }
+  }
+}
